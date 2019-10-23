@@ -15,7 +15,7 @@ public class Kata3 {
         histogram.increment("ulpgc.es");
 
          
-        HistogramDisplay histogramDisplay = new HistogramDisplay(histogram);
+        HistogramDisplay histogramDisplay = new HistogramDisplay(histogram,"Histograma", "Histograma JFreeChart", "Dominios emails", "Nº de emails");
         histogramDisplay.execute();
     }
     

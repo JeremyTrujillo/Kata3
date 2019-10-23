@@ -13,10 +13,10 @@ import org.jfree.ui.ApplicationFrame;
 class HistogramDisplay extends ApplicationFrame {
     private final Histogram histogram;
 
-    public HistogramDisplay(Histogram histogram) {
-        super("HISTOGRAMA");
+    public HistogramDisplay(Histogram histogram, String name, String titulo, String tituloX, String tituloY) {
+        super(name);
         this.histogram = histogram;
-        setContentPane(createPanel());
+        setContentPane(createPanel(titulo, tituloX, tituloY));
         pack();
      
     }
@@ -25,15 +25,15 @@ class HistogramDisplay extends ApplicationFrame {
         setVisible(true);
     }
 
-    private JPanel createPanel() {
-        ChartPanel panel = new ChartPanel(createChart(createDataSet()));
+    private JPanel createPanel(String titulo, String tituloX, String tituloY) {
+        ChartPanel panel = new ChartPanel(createChart(createDataSet(), titulo, tituloX, tituloY));
         setPreferredSize(new Dimension(500,400));
         return panel;
         
     }
 
-    private JFreeChart createChart(DefaultCategoryDataset dataSet) {
-        JFreeChart chart = ChartFactory.createBarChart3D("Histograma JFreeChart", "Dominios emails", "Nº de emails", 
+    private JFreeChart createChart(DefaultCategoryDataset dataSet, String titulo, String tituloX, String tituloY) {
+        JFreeChart chart = ChartFactory.createBarChart3D(titulo, tituloX, tituloY, 
                 dataSet, PlotOrientation.VERTICAL, false, false, rootPaneCheckingEnabled);
         return chart;
     }
